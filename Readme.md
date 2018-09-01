@@ -2,6 +2,10 @@
 
 **PLEASE NOTE THAT THIS IS BETA SOFTWARE. I'M IN NO WAY RESPONSIBLE FOR ANY DATA LOSS.**
 
+<p align="center">
+  <img src="Img001.png" alt="FileScrambler"/>
+</p>
+
 *FileScrambler* is a small app that is useful for camouflaging files so that non-tech-savvy people will not know their contents.
 It renames files and folder scrambling their name and it swaps some bytes of the file headers so that they are not recognizable by the associated programs.
 
