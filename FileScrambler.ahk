@@ -33,7 +33,7 @@
   SCRIPTNAME    := "FileScrambler"
   SCRIPTVER     := "0.1"
   SCRIPTABOUT   := "V" SCRIPTVER " - (C)2018 CIRO PRINCIPE"
-  SCRIPTRESDIR  := A_Temp "\AHK_FS_TEMP\"     
+  SCRIPTRESDIR  := A_Temp "\AHK_FS_TEMP\"
   SCRIPTLOGENA  := 1
   SCRIPTLOGFILE := A_ScriptDir "\FileScrambler-Debug_" A_Now ".log"
   ADDSYSFILES   := 0
@@ -53,6 +53,13 @@
 ; ======================================================================================================================
 ; ===[ MAIN SECTION ]===================================================================================================
 ; ======================================================================================================================
+
+; Open log file.
+If ( SCRIPTLOGENA && !IsObject(SCRIPTLOGFILE := FileOpen(SCRIPTLOGFILE, "w `n")) )
+{
+    MsgBox,, %SCRIPTNAME%, Error creating log file. Program aborted.
+    ExitApp   
+}
 
 WriteLog("===[" SCRIPTNAME " version " SCRIPTVER "]=== started.`n", 1)
 
@@ -198,6 +205,8 @@ BTNCLOSE:
     If ( ErrorLevel )
          WriteLog("Error removing resources folder: " A_LastError ". Quit program.`n", 1)
     Else WriteLog("Resources folder removed. Quit program.`n", 1)
+    If ( SCRIPTLOGENA )
+        SCRIPTLOGFILE.Close()
 ExitApp
 
 ; ======================================================================================================================
@@ -335,8 +344,7 @@ FileWriteHex(sHex, sFilePath)
 WriteLog(sRecord, bStamp:=0)
 {
     If ( SCRIPTLOGENA )
-        FileAppend, % (bStamp ? "[" A_YYYY "." A_MM "." A_DD "]" A_Hour ":" A_Min ":" A_Sec " - " : "") sRecord
-                  , % SCRIPTLOGFILE
+        SCRIPTLOGFILE.Write((bStamp ? "[" A_YYYY "." A_MM "." A_DD "]" A_Hour ":" A_Min ":" A_Sec " - " : "") sRecord)
 }
 
 ; Implement a minimal Dictionary COM object used for char substitution.
