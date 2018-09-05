@@ -3,7 +3,8 @@
 ; Description ..: Camouflaging tool that helps hiding files and directories scrambling names and swapping header bytes.
 ; AHK Version ..: AHK_L 1.1.26.1 x32/64 ANSI/Unicode
 ; Author .......: (C) 2018 by Ciro Principe
-; Changelog ....: Sep 01, 2018 - v0.1 - First version.
+; Changelog ....: Sep 01, 2018 - v0.1   - First version.
+; ..............: Sep 05, 2018 - v0.1.1 - Replaced FileAppend with a file object for logging.
 ; License ......: GNU Lesser General Public License
 ; ..............: This program is free software: you can redistribute it and/or modify it under the terms of the GNU
 ; ..............: Lesser General Public License as published by the Free Software Foundation, either version 3 of the
