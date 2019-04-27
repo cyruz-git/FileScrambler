@@ -123,13 +123,14 @@ Return
 ; ======================================================================================================================
 
 MENUICON:
-    GuiControlGet, sOldSBText,, SBText
-    GuiControl, Text, SBText, %SCRIPTABOUT%
-    SetTimer, MENUICONTIMER, -3000
-Return
-
-MENUICONTIMER:
-    GuiControl, Text, SBText, %sOldSBText%
+   	GuiControlGet, SBText
+	If ( SBText != SCRIPTABOUT )
+	{
+		GuiControlGet, sOldSBText,, SBText
+		GuiControl,, SBText, %SCRIPTABOUT%
+	    SetTimer, MENUICON, -5000
+	}
+	Else GuiControl,, SBText, %sOldSBText%
 Return
 
 BTNMINIMIZE:
